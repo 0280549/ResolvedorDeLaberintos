@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 int main() {
+	cout << "Hola mundo" << endl;
 	/*FUNCIONES
 	Función Leer laberinto
 	Función DFS cons pre
