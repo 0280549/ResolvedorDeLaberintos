@@ -9,24 +9,24 @@
 
 using namespace std;
 
-// ==============================================================================
-// CLASE NODO N-ARIO (ARBOL DE EXPLORACION DEL DFS)
-// ==============================================================================
+//Construccion de arbol de dfs
+
+//hacemos la clase nodo como lo aprendido en clase
 class Node {
 public:
-    string value;            // Texto de la coordenada, por ejemplo "(3,3)"
+    string value;            // Lo que viene en la cordenada lo usamos como string: "(fila,columna)"
     pair<int, int> coord;    // Par {fila, columna}
-    Node* parent;            // Nodo padre (sirve para reconstruir la ruta)
-    vector<Node*> children;  // Nodos hijos
+    Node* parent;
+    vector<Node*> children;
 
-    Node(int f, int c) {
-        coord = {f, c};
-        value = "(" + to_string(f) + "," + to_string(c) + ")";
-        parent = nullptr;
+    Node(int x, int y) {
+        coord = {x, y};
+        value = "(" + to_string(x) + "," + to_string(y) + ")"; // Tenemos que convertir a string para poder guardarlo en el vector de strings
+        parent = nullptr; //al padre lo inicializamos en nullptr, ya que al crear el nodo no tiene padre
     }
 
-    // Agrega un hijo y le asigna este nodo como padre
-    void addChild(Node* hijo) {
+    // Se agrega un hijo y a este nodo lo ponemos como padre del hijo
+    void add_Child(Node* hijo) {
         hijo->parent = this;
         children.push_back(hijo);
     }
@@ -198,7 +198,7 @@ Node* dfsConstruirArbol(const LaberintoData &lab, int r, int c, set<pair<int, in
     for (int i = 0; i < 4; i++) {
         Node* hijo = dfsConstruirArbol(lab, r + dr[i], c + dc[i], visitados);
         if (hijo != nullptr) {
-            actual->addChild(hijo);
+            actual->add_Child(hijo);
         }
     }
     return actual;
