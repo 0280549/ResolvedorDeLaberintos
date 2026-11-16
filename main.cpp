@@ -265,12 +265,12 @@ void make_BFS(const Maze_Data &maze, vector<string> &bfs_Route, vector<string> &
     // Reconstruir la ruta de B hacia A con una PILA, para sacarla en orden A -> B
     if (reached) {
         stack<string> path_Stack;
-        pair<int, int> cell = maze.exit_B;
-        while (cell != maze.start_A) {
-            path_Stack.push(coord_To_Text(cell));
-            cell = parent_Map[cell];
+        pair<int, int> now = maze.exit_B;
+        while (now != maze.start_A) {
+            path_Stack.push(coord_To_Text(now));
+            now = parent_Map[now]; //se va al padre
         }
-        path_Stack.push(coord_To_Text(maze.start_A));
+        path_Stack.push(coord_To_Text(maze.start_A)); //A no estaba en el while porque es nodo raiz, por eso ahorita se agrega
 
         while (!path_Stack.empty()) {
             bfs_Solution.push_back(path_Stack.top());
