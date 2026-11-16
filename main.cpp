@@ -58,11 +58,11 @@ int main() {
     Maze_Data maze = load_Maze(file_Name);
 
     if (maze.matrix.empty()) {
-        cout << "Error: the file '" << file_Name << "' was not found or is empty." << endl;
+        cout << "Error: el archivo '" << file_Name << "' no fue encontrado o estaba vacio." << endl;
         return 1;
     }
     if (maze.start_A.first == -1 || maze.exit_B.first == -1) {
-        cout << "Error: the maze must have an 'A' and a 'B'." << endl;
+        cout << "Error: el laberinto debe tener un 'A' y un 'B'." << endl;
         return 1;
     }
 
@@ -91,7 +91,7 @@ int main() {
     save_File("bfs_route.txt", bfs_Route);
     save_File("bfs_solution.txt", bfs_Solution);
 
-    cout << "Output files generated successfully:" << endl;
+    cout << "5 Archivos generados:" << endl;
     cout << " 1. dfs_preorder_route.txt" << endl;
     cout << " 2. dfs_postorder_route.txt" << endl;
     cout << " 3. dfs_solution.txt" << endl;
